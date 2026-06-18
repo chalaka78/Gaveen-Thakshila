@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaveen &amp; Thakshila | Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="envelope-intro" id="envelopeIntro">
+    <div class="split-invitation" aria-hidden="false">
+      <div class="split-panel split-panel-left"></div>
+      <div class="split-panel split-panel-right"></div>
+
+      <img class="intro-flower intro-flower-left" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
+      <img class="intro-flower intro-flower-right" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
+      <img class="intro-flower intro-flower-mobile-top-left" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
+      <img class="intro-flower intro-flower-mobile-top-right" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
+
+      <button class="open-envelope-btn" id="openEnvelopeBtn" type="button" aria-label="Open wedding invitation">
+        <img src="images/ringbutton.webp" alt="Open invitation" />
+      </button>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-layout reveal active">
+        <div class="invitation-card hero-card">
+          <p class="eyebrow">Together with their families</p>
+
+          <h1 class="names">
+            <span>Gaveen</span>
+            <span class="ampersand">and</span>
+            <span>Thakshila</span>
+          </h1>
+
+          <p class="subtitle">
+            Joyfully invite you to celebrate the beginning of their forever, surrounded by love, blessings, and beautiful memories.
+          </p>
+
+          <div class="date-row">
+            <div class="date-line"></div>
+            <div class="date-box">31 July 2026</div>
+            <div class="date-line"></div>
+          </div>
+
+          <div class="actions">
+            <a class="btn" href="#details">View Details</a>
+            <a class="btn secondary" href="https://maps.app.goo.gl/e7iPafdMdp5ST1J27" target="_blank" rel="noopener">Open Location</a>
+            <a class="btn secondary" id="addCalendar" href="#" role="button">Add to Calendar</a>
+          </div>
+        </div>
+
+        <div class="hero-couple-stage" id="heroCoupleStage" aria-label="Wedding couple illustration">
+          <div class="hero-couple-ring hero-couple-ring-one"></div>
+          <div class="hero-couple-ring hero-couple-ring-two"></div>
+          <div class="hero-couple-glow"></div>
+
+          <div class="hero-sparkles" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <img class="hero-couple-img" src="images/weddinghome.webp" alt="Gaveen and Thakshila wedding illustration" />
+
+          <div class="hero-couple-caption">
+            <span>With blessings and love</span>
+            <strong>Our Forever Begins</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal quote-image-section">
+      <div class="quote-photo-card">
+        <img class="quote-photo-img" src="images/eng1.webp" alt="Gaveen and Thakshila" />
+
+        <div class="quote-photo-gradient" aria-hidden="true"></div>
+
+        <div class="quote-photo-content">
+          <span class="quote-photo-kicker">A memory to hold forever</span>
+          <p class="quote-photo-text">
+            “In the laughter we share, the promises we keep, and the quiet moments that only our hearts understand, we found a love beautiful enough to celebrate for a lifetime.”
+          </p>
+          <span class="quote-photo-signature">Gaveen &amp; Thakshila</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="details">
+      <h2 class="section-title">Wedding Details</h2>
+      <p class="section-text">
+        We would be honoured by your presence as we celebrate our wedding day.
+      </p>
+
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="detail-icon">♡</div>
+          <h3>Ceremony</h3>
+          <p>Wedding ceremony details will be added soon.</p>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-icon">✦</div>
+          <h3>Date</h3>
+          <p>Friday<br />31 July 2026</p>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-icon">❀</div>
+          <h3>Venue</h3>
+          <p>Grand Walawwa<br />Kegalle, Sri Lanka</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section-title">Counting Down</h2>
+      <p class="section-text">
+        The day we begin a new chapter together is getting closer.
+      </p>
+
+      <div class="countdown" aria-label="Wedding countdown">
+        <div class="time-box">
+          <strong id="days">00</strong>
+          <span>Days</span>
+        </div>
+        <div class="time-box">
+          <strong id="hours">00</strong>
+          <span>Hours</span>
+        </div>
+        <div class="time-box">
+          <strong id="minutes">00</strong>
+          <span>Minutes</span>
+        </div>
+        <div class="time-box">
+          <strong id="seconds">00</strong>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="quote-card">
+        <p>Two hearts. One promise. A lifetime of love.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>With love, <strong>Gaveen &amp; Thakshila</strong></p>
+    </footer>
+  </main>
+</body>
+</html>
