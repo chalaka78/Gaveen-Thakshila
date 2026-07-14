@@ -13,19 +13,35 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <!-- ============ ENVELOPE / WAX-SEAL INTRO ============ -->
   <div class="envelope-intro" id="envelopeIntro">
-    <div class="split-invitation" aria-hidden="false">
-      <div class="split-panel split-panel-left"></div>
-      <div class="split-panel split-panel-right"></div>
+    <div class="envelope-scene">
+      <p class="intro-kicker">You&rsquo;re Invited</p>
 
-      <img class="intro-flower intro-flower-left" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
-      <img class="intro-flower intro-flower-right" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
-      <img class="intro-flower intro-flower-mobile-top-left" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
-      <img class="intro-flower intro-flower-mobile-top-right" src="images/flowerdesign.webp" alt="" aria-hidden="true" />
+      <div class="envelope" id="envelope">
+        <div class="env-back" aria-hidden="true"></div>
 
-      <button class="open-envelope-btn" id="openEnvelopeBtn" type="button" aria-label="Open wedding invitation">
-        <img src="images/ringbutton.webp" alt="Open invitation" />
-      </button>
+        <div class="env-letter" aria-hidden="true">
+          <span class="env-letter-top">The Wedding of</span>
+          <span class="env-letter-names">Gaveen &amp; Thakshila</span>
+          <span class="env-letter-rule"></span>
+          <span class="env-letter-date">31 &middot; 07 &middot; 2026</span>
+        </div>
+
+        <div class="env-front" aria-hidden="true"></div>
+        <div class="env-flap" aria-hidden="true"></div>
+
+        <button class="wax-seal" id="openEnvelopeBtn" type="button" aria-label="Tap the seal to open the invitation">
+          <span class="wax-seal-ring" aria-hidden="true"></span>
+          <span class="wax-seal-mono">G<i>&amp;</i>T</span>
+          <span class="wax-seal-burst" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <p class="tap-hint" id="tapHint">
+        <span class="tap-hint-text">Tap the seal to open the invitation</span>
+        <span class="tap-hint-chevron" aria-hidden="true"></span>
+      </p>
     </div>
   </div>
 
@@ -90,7 +106,7 @@
         <div class="quote-photo-content">
           <span class="quote-photo-kicker">A memory to hold forever</span>
           <p class="quote-photo-text">
-            “In the laughter we share, the promises we keep, and the quiet moments that only our hearts understand, we found a love beautiful enough to celebrate for a lifetime.”
+            &ldquo;In the laughter we share, the promises we keep, and the quiet moments that only our hearts understand, we found a love beautiful enough to celebrate for a lifetime.&rdquo;
           </p>
           <span class="quote-photo-signature">Gaveen &amp; Thakshila</span>
         </div>
@@ -105,19 +121,19 @@
 
       <div class="details-grid">
         <div class="detail-card">
-          <div class="detail-icon">♡</div>
+          <div class="detail-icon">&#9825;</div>
           <h3>Ceremony</h3>
           <p>Wedding ceremony details will be added soon.</p>
         </div>
 
         <div class="detail-card">
-          <div class="detail-icon">✦</div>
+          <div class="detail-icon">&#10022;</div>
           <h3>Date</h3>
           <p>Friday<br />31 July 2026</p>
         </div>
 
         <div class="detail-card">
-          <div class="detail-icon">❀</div>
+          <div class="detail-icon">&#10048;</div>
           <h3>Venue</h3>
           <p>Grand Walawwa<br />Kegalle, Sri Lanka</p>
         </div>
