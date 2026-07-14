@@ -119,21 +119,24 @@ if (envelopeIntro && openEnvelopeBtn) {
     // prepare the petals underneath (kept hidden until the reveal)
     createPetalEffect();
 
-    // 2. once the letter has risen, reveal the page behind
+    // once the seal has cracked, the flap has opened and the card has lifted,
+    // dissolve the whole intro (card + veil) together so the opened card is
+    // never left sitting on top of the loaded page.
     setTimeout(() => {
       envelopeIntro.classList.add("opened");
+      envelopeIntro.classList.add("hide");
       envelopeIntro.setAttribute("aria-hidden", "true");
 
       document.body.classList.remove("intro-active");
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
       document.body.classList.add("petals-active");
-    }, 1600);
+    }, 1650);
 
-    // 3. fade the intro layer away entirely
+    // safety: guarantee the intro is fully removed from view
     setTimeout(() => {
-      envelopeIntro.classList.add("hide");
-    }, 2700);
+      envelopeIntro.style.display = "none";
+    }, 2500);
   }, { once: true });
 }
 
