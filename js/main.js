@@ -3,63 +3,6 @@ const openEnvelopeBtn = document.getElementById("openEnvelopeBtn");
 const heroCoupleStage = document.getElementById("heroCoupleStage");
 const heroCard = document.querySelector(".hero-card");
 
-function animateRingButtonImage() {
-  const ringImage = openEnvelopeBtn ? openEnvelopeBtn.querySelector("img") : null;
-
-  if (!ringImage) {
-    return;
-  }
-
-  let rotation = 0;
-  let lastTime = performance.now();
-  let isRunning = true;
-  let isHovering = false;
-
-  function rotateRingButton(currentTime) {
-    if (!isRunning) {
-      return;
-    }
-
-    const delta = currentTime - lastTime;
-    lastTime = currentTime;
-
-    const speed = isHovering ? 0.035 : 0.014;
-    const pulse = 1 + Math.sin(currentTime / 560) * 0.022;
-
-    rotation = (rotation + delta * speed) % 360;
-    ringImage.style.transform = `rotate(${rotation}deg) scale(${pulse})`;
-
-    requestAnimationFrame(rotateRingButton);
-  }
-
-  requestAnimationFrame(rotateRingButton);
-
-  openEnvelopeBtn.addEventListener("mouseenter", () => {
-    isHovering = true;
-    openEnvelopeBtn.classList.add("is-hovering");
-  });
-
-  openEnvelopeBtn.addEventListener("mouseleave", () => {
-    isHovering = false;
-    openEnvelopeBtn.classList.remove("is-hovering");
-  });
-
-  openEnvelopeBtn.addEventListener("pointerdown", () => {
-    openEnvelopeBtn.classList.remove("is-clicked");
-    void openEnvelopeBtn.offsetWidth;
-    openEnvelopeBtn.classList.add("is-clicked");
-  });
-
-  openEnvelopeBtn.addEventListener("click", () => {
-    openEnvelopeBtn.classList.add("is-opening");
-    isRunning = false;
-    ringImage.style.transform = `rotate(${rotation + 30}deg) scale(0.72)`;
-    ringImage.style.opacity = "0.9";
-  }, { once: true });
-}
-
-animateRingButtonImage();
-
 function createPetalEffect() {
   if (document.querySelector(".petal-layer")) {
     return;
@@ -163,24 +106,35 @@ function addHeroMouseMotion() {
 
 addHeroMouseMotion();
 
+// ---- Envelope open sequence (tap the wax seal) ----
 if (envelopeIntro && openEnvelopeBtn) {
   document.body.classList.add("intro-active");
 
   openEnvelopeBtn.addEventListener("click", () => {
     openEnvelopeBtn.disabled = true;
-    envelopeIntro.classList.add("opened");
-    envelopeIntro.setAttribute("aria-hidden", "true");
 
-    document.body.classList.remove("intro-active");
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    // 1. crack the seal + open the flap + lift the letter (CSS driven)
+    envelopeIntro.classList.add("opening");
 
+    // prepare the petals underneath (kept hidden until the reveal)
     createPetalEffect();
-    document.body.classList.add("petals-active");
 
+    // 2. once the letter has risen, reveal the page behind
+    setTimeout(() => {
+      envelopeIntro.classList.add("opened");
+      envelopeIntro.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("intro-active");
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+      document.body.classList.add("petals-active");
+    }, 1600);
+
+    // 3. fade the intro layer away entirely
     setTimeout(() => {
       envelopeIntro.classList.add("hide");
-    }, 1500);
-  });
+    }, 2700);
+  }, { once: true });
 }
 
 const weddingDate = new Date("2026-07-31T00:00:00+05:30").getTime();
