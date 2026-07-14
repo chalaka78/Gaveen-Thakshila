@@ -687,11 +687,10 @@ body::before {
     radial-gradient(circle at 20% 22%, rgba(159, 170, 139, 0.18), transparent 40%),
     radial-gradient(circle at 82% 78%, rgba(196, 181, 154, 0.20), transparent 42%),
     linear-gradient(150deg, #f3ecdd 0%, var(--ivory) 50%, #ece3d2 100%);
-  transition: background 0.6s ease, opacity 0.9s ease, visibility 0.9s ease;
+  transition: background 0.5s ease, opacity 0.7s ease, visibility 0.7s ease;
 }
 
 .envelope-intro.opened {
-  background: transparent;
   pointer-events: none;
 }
 
@@ -781,8 +780,8 @@ body::before {
   opacity: 0;
   transform: translate(-50%, 6%) scale(0.97);
   transition:
-    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.7s,
-    opacity 0.55s ease 0.7s;
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+    opacity 0.5s ease 0.5s;
 }
 
 .env-letter-top {
@@ -833,7 +832,7 @@ body::before {
   border-radius: 12px 12px 0 0;
   transform-origin: 50% 0;
   transform: rotateX(0deg);
-  transition: transform 0.95s cubic-bezier(0.7, 0, 0.2, 1) 0.28s;
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1) 0.2s;
   backface-visibility: hidden;
   box-shadow: 0 6px 14px rgba(120, 115, 95, 0.16);
 }
