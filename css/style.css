@@ -623,6 +623,114 @@ body::before {
   text-transform: uppercase;
 }
 
+/* ---------------- AGENDA / ORDER OF THE DAY ---------------- */
+.agenda {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 22px 28px;
+  border-radius: 6px;
+  background: var(--ivory-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agenda-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px rgba(111, 124, 91, 0.16);
+}
+
+.agenda-time {
+  font-family: "Playfair Display", serif;
+  font-size: 1.08rem;
+  color: var(--sage-deep);
+  letter-spacing: 0.05em;
+  padding: 3px 0;
+  border-right: 1px solid var(--line);
+}
+
+.agenda-body h3 {
+  margin: 0 0 6px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.28rem;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.agenda-body p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ---------------- RSVP ---------------- */
+.rsvp-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.rsvp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 36px 26px;
+  border-radius: 6px;
+  background: var(--ivory-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.rsvp-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sage);
+  box-shadow: 0 24px 48px rgba(111, 124, 91, 0.18);
+}
+
+.rsvp-role {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.rsvp-name {
+  font-family: "Pinyon Script", cursive;
+  font-size: clamp(2.1rem, 4vw, 2.6rem);
+  line-height: 1;
+  color: var(--sage-deep);
+}
+
+.rsvp-number {
+  font-size: 1.08rem;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+}
+
+.rsvp-note {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ---------------- CLOSING QUOTE ---------------- */
 .quote-card {
   width: min(840px, 100%);
@@ -1278,6 +1386,22 @@ body.petals-active .petal-layer {
 
   .details-grid,
   .countdown {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 22px;
+  }
+
+  .agenda-time {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 8px;
+  }
+
+  .rsvp-cards {
     grid-template-columns: 1fr;
   }
 
