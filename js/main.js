@@ -140,7 +140,7 @@ if (envelopeIntro && openEnvelopeBtn) {
   }, { once: true });
 }
 
-const weddingDate = new Date("2026-07-31T00:00:00+05:30").getTime();
+const weddingDate = new Date("2026-08-19T09:00:00+05:30").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
@@ -205,11 +205,11 @@ if (addCalendarBtn) {
       "BEGIN:VEVENT",
       "UID:gaveen-thakshila-wedding-2026@invitation",
       "DTSTAMP:20260101T000000Z",
-      "DTSTART;VALUE=DATE:20260731",
-      "DTEND;VALUE=DATE:20260801",
+      "DTSTART;TZID=Asia/Colombo:20260819T090000",
+      "DTEND;TZID=Asia/Colombo:20260819T163000",
       "SUMMARY:Gaveen & Thakshila Wedding",
-      "DESCRIPTION:Join us as we celebrate our wedding day.",
-      "LOCATION:Grand Walawwa, Kegalle, Sri Lanka",
+      "DESCRIPTION:Join us as we celebrate our wedding day. Poruwa Ceremony at 09.09 AM.",
+      "LOCATION:Peradeniya Royal Rest House (Queen's Ballroom)\\, Peradeniya\\, Sri Lanka",
       "STATUS:CONFIRMED",
       "END:VEVENT",
       "END:VCALENDAR"
