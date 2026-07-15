@@ -12,12 +12,12 @@ function createPetalEffect() {
   petalLayer.className = "petal-layer";
   petalLayer.setAttribute("aria-hidden", "true");
 
-  // ivory / sage / champagne petal tones
+  // ivory / gold petal tones
   const petalColors = [
-    "rgba(253, 251, 246, 0.92)",
-    "rgba(196, 181, 154, 0.82)",
-    "rgba(159, 170, 139, 0.72)",
-    "rgba(239, 231, 216, 0.88)"
+    "rgba(253, 251, 246, 0.94)",
+    "rgba(227, 196, 106, 0.86)",
+    "rgba(201, 162, 39, 0.72)",
+    "rgba(240, 223, 168, 0.9)"
   ];
 
   const petalCount = window.matchMedia("(max-width: 520px)").matches ? 16 : 28;
@@ -105,6 +105,21 @@ function addHeroMouseMotion() {
 }
 
 addHeroMouseMotion();
+
+// ---- Font loading ----
+// Reveal the intro only once the webfonts are ready, so nothing renders in a
+// fallback face and then visibly swaps. The timeout is a safety net in case
+// the font request is slow or blocked.
+function markFontsReady() {
+  document.body.classList.add("fonts-ready");
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(markFontsReady);
+  setTimeout(markFontsReady, 2000);
+} else {
+  markFontsReady();
+}
 
 // ---- Hero name animation ----
 // Each letter becomes its own span so it can rise and shimmer on a stagger.
