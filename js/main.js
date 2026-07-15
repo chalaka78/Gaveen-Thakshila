@@ -106,6 +106,112 @@ function addHeroMouseMotion() {
 
 addHeroMouseMotion();
 
+// ---- Background music ----
+// Browsers block audio that starts on its own, so playback is kicked off by
+// the guest's tap on the wax seal (a real user gesture) and then gently
+// faded up to volume.
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+const MUSIC_VOLUME = 0.35;
+let fadeTimer = null;
+let musicReady = false;
+
+function fadeMusicTo(target, duration = 1800) {
+  if (!bgMusic) {
+    return;
+  }
+
+  window.clearInterval(fadeTimer);
+
+  const steps = 30;
+  const stepTime = duration / steps;
+  const start = bgMusic.volume;
+  const delta = (target - start) / steps;
+  let i = 0;
+
+  fadeTimer = window.setInterval(() => {
+    i += 1;
+    const next = start + delta * i;
+    bgMusic.volume = Math.min(1, Math.max(0, next));
+
+    if (i >= steps) {
+      window.clearInterval(fadeTimer);
+      bgMusic.volume = target;
+      if (target === 0) {
+        bgMusic.pause();
+      }
+    }
+  }, stepTime);
+}
+
+function startMusic() {
+  if (!bgMusic || !musicToggle) {
+    return;
+  }
+
+  bgMusic.volume = 0;
+  const attempt = bgMusic.play();
+
+  if (attempt && typeof attempt.then === "function") {
+    attempt
+      .then(() => {
+        musicReady = true;
+        musicToggle.hidden = false;
+        musicToggle.classList.remove("is-muted");
+        musicToggle.setAttribute("aria-pressed", "true");
+        musicToggle.setAttribute("aria-label", "Pause background music");
+        fadeMusicTo(MUSIC_VOLUME);
+      })
+      .catch(() => {
+        // Autoplay refused or the audio file is missing — show the control
+        // muted so the guest can start it themselves.
+        musicReady = false;
+        musicToggle.hidden = false;
+        musicToggle.classList.add("is-muted");
+        musicToggle.setAttribute("aria-pressed", "false");
+        musicToggle.setAttribute("aria-label", "Play background music");
+      });
+  }
+}
+
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener("click", () => {
+    const muted = musicToggle.classList.toggle("is-muted");
+
+    if (muted) {
+      musicToggle.setAttribute("aria-pressed", "false");
+      musicToggle.setAttribute("aria-label", "Play background music");
+      fadeMusicTo(0, 600);
+    } else {
+      musicToggle.setAttribute("aria-pressed", "true");
+      musicToggle.setAttribute("aria-label", "Pause background music");
+      bgMusic.play().then(() => {
+        musicReady = true;
+        fadeMusicTo(MUSIC_VOLUME, 900);
+      }).catch(() => {});
+    }
+  });
+
+  // Be a good guest: hush while the tab is in the background.
+  document.addEventListener("visibilitychange", () => {
+    if (!musicReady || musicToggle.classList.contains("is-muted")) {
+      return;
+    }
+
+    if (document.hidden) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play().catch(() => {});
+    }
+  });
+
+  // If the file can't be loaded at all, don't show a dead control.
+  bgMusic.addEventListener("error", () => {
+    musicToggle.hidden = true;
+  });
+}
+
 // ---- Envelope open sequence (tap the wax seal) ----
 if (envelopeIntro && openEnvelopeBtn) {
   document.body.classList.add("intro-active");
@@ -115,6 +221,9 @@ if (envelopeIntro && openEnvelopeBtn) {
 
     // 1. crack the seal + open the flap + lift the letter (CSS driven)
     envelopeIntro.classList.add("opening");
+
+    // 2. the tap is a user gesture, so this is where audio is allowed to begin
+    startMusic();
 
     // prepare the petals underneath (kept hidden until the reveal)
     createPetalEffect();
