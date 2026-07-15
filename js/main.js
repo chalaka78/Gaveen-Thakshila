@@ -131,12 +131,12 @@ if (envelopeIntro && openEnvelopeBtn) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
       document.body.classList.add("petals-active");
-    }, 1650);
+    }, 2300);
 
     // safety: guarantee the intro is fully removed from view
     setTimeout(() => {
       envelopeIntro.style.display = "none";
-    }, 2500);
+    }, 3200);
   }, { once: true });
 }
 
