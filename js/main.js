@@ -206,9 +206,15 @@ if (musicToggle && bgMusic) {
     }
   });
 
-  // If the file can't be loaded at all, don't show a dead control.
+  // If the file can't be loaded or decoded, don't show a dead control —
+  // but say why in the console so the cause is easy to find.
   bgMusic.addEventListener("error", () => {
     musicToggle.hidden = true;
+    console.warn(
+      "[music] Could not load audio/wedding-music.mp3. Check that the file " +
+      "exists, is a real mp3 (not an empty placeholder), and that the name " +
+      "and capitalisation match exactly."
+    );
   });
 }
 
