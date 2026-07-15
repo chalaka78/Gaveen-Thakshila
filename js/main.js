@@ -270,7 +270,7 @@ if (envelopeIntro && openEnvelopeBtn) {
   openEnvelopeBtn.addEventListener("click", () => {
     openEnvelopeBtn.disabled = true;
 
-    // 1. crack the seal + open the flap + lift the letter (CSS driven)
+    // 1. crack the seal, open the flap, draw the letter up out of the pocket
     envelopeIntro.classList.add("opening");
 
     // 2. the tap is a user gesture, so this is where audio is allowed to begin
@@ -279,9 +279,14 @@ if (envelopeIntro && openEnvelopeBtn) {
     // prepare the petals underneath (kept hidden until the reveal)
     createPetalEffect();
 
-    // once the seal has cracked, the flap has opened and the card has lifted,
-    // dissolve the whole intro (card + veil) together so the opened card is
-    // never left sitting on top of the loaded page.
+    // 3. the card, now clear of the envelope, opens toward the viewer and the
+    //    page appears through it
+    setTimeout(() => {
+      envelopeIntro.classList.add("expanding");
+    }, 1750);
+
+    // 4. dissolve the intro as the card passes the camera, so the opened card
+    //    is never left sitting on top of the loaded page
     setTimeout(() => {
       envelopeIntro.classList.add("opened");
       envelopeIntro.classList.add("hide");
@@ -294,12 +299,12 @@ if (envelopeIntro && openEnvelopeBtn) {
 
       // the names now write themselves in as the page is revealed
       playHeroIntro();
-    }, 2300);
+    }, 2550);
 
     // safety: guarantee the intro is fully removed from view
     setTimeout(() => {
       envelopeIntro.style.display = "none";
-    }, 3200);
+    }, 3500);
   }, { once: true });
 } else {
   // no intro overlay present — animate the hero straight away
