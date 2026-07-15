@@ -927,6 +927,21 @@ body::before {
   color: var(--muted);
 }
 
+/* iOS Safari still restyles numbers it detects, even with the meta tag —
+   these override the blue link look so the number stays on theme. */
+.rsvp-number a,
+.rsvp-number a:link,
+.rsvp-number a:visited,
+a[x-apple-data-detectors],
+[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  pointer-events: none;
+}
+
 .rsvp-actions {
   display: flex;
   gap: 10px;
