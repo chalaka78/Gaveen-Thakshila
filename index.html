@@ -46,10 +46,7 @@
   </div>
 
   <!-- ============ BACKGROUND MUSIC ============ -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="audio/wedding-music.mp3" type="audio/mpeg" />
-    <source src="audio/wedding-music.ogg" type="audio/ogg" />
-  </audio>
+  <audio id="bgMusic" loop preload="auto" src="audio/wedding-music.mp3"></audio>
 
   <button class="music-toggle" id="musicToggle" type="button" hidden
           aria-label="Pause background music" aria-pressed="true">
@@ -107,6 +104,28 @@
             <span>The wedding celebration of</span>
             <strong>Gaveen &amp; Thakshila</strong>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal families-section">
+      <div class="families">
+        <div class="family-col">
+          <span class="family-name">Gaveen</span>
+          <span class="family-role">Son of</span>
+          <p class="family-parents">Mr. &amp; Mrs. Jayathiss</p>
+        </div>
+
+        <div class="family-divider" aria-hidden="true">
+          <span class="family-divider-line"></span>
+          <span class="family-divider-mark">&#10087;</span>
+          <span class="family-divider-line"></span>
+        </div>
+
+        <div class="family-col">
+          <span class="family-name">Thakshila</span>
+          <span class="family-role">Daughter of</span>
+          <p class="family-parents">Mr. &amp; Mrs. Ekanayake</p>
         </div>
       </div>
     </section>
@@ -239,19 +258,31 @@
       </p>
 
       <div class="rsvp-cards">
-        <a class="rsvp-card" href="tel:0752393487">
-          <span class="rsvp-role">Call to RSVP</span>
+        <div class="rsvp-card">
           <span class="rsvp-name">Gaveen</span>
           <span class="rsvp-number">075 239 3487</span>
-          <span class="rsvp-note">Tap to call</span>
-        </a>
+          <div class="rsvp-actions">
+            <a class="rsvp-btn" target="_blank" rel="noopener"
+               href="https://wa.me/94752393487?text=Hi%20Gaveen%2C%20I%27d%20love%20to%20confirm%20my%20RSVP%20for%20your%20wedding%20on%2019%20August%202026.">
+              <span class="rsvp-btn-icon" aria-hidden="true"></span>
+              WhatsApp
+            </a>
+            <a class="rsvp-btn ghost" href="tel:+94752393487">Call</a>
+          </div>
+        </div>
 
-        <a class="rsvp-card" href="tel:0772302889">
-          <span class="rsvp-role">Call to RSVP</span>
+        <div class="rsvp-card">
           <span class="rsvp-name">Thakshila</span>
           <span class="rsvp-number">077 230 2889</span>
-          <span class="rsvp-note">Tap to call</span>
-        </a>
+          <div class="rsvp-actions">
+            <a class="rsvp-btn" target="_blank" rel="noopener"
+               href="https://wa.me/94772302889?text=Hi%20Thakshila%2C%20I%27d%20love%20to%20confirm%20my%20RSVP%20for%20your%20wedding%20on%2019%20August%202026.">
+              <span class="rsvp-btn-icon" aria-hidden="true"></span>
+              WhatsApp
+            </a>
+            <a class="rsvp-btn ghost" href="tel:+94772302889">Call</a>
+          </div>
+        </div>
       </div>
     </section>
 
