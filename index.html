@@ -59,14 +59,25 @@
   <main class="page">
     <section class="hero">
       <div class="hero-layout reveal active">
-        <div class="invitation-card hero-card">
+        <div class="invitation-card hero-card" id="heroCard">
+          <span class="card-corner card-corner-tl" aria-hidden="true"></span>
+          <span class="card-corner card-corner-tr" aria-hidden="true"></span>
+          <span class="card-corner card-corner-bl" aria-hidden="true"></span>
+          <span class="card-corner card-corner-br" aria-hidden="true"></span>
+
           <p class="eyebrow">Together with their families</p>
 
-          <h1 class="names">
-            <span>Gaveen</span>
+          <h1 class="names" id="heroNames" aria-label="Gaveen and Thakshila">
+            <span class="name-word">Gaveen</span>
             <span class="ampersand">and</span>
-            <span>Thakshila</span>
+            <span class="name-word">Thakshila</span>
           </h1>
+
+          <div class="name-flourish" aria-hidden="true">
+            <span class="name-flourish-line"></span>
+            <span class="name-flourish-mark">&#10087;</span>
+            <span class="name-flourish-line"></span>
+          </div>
 
           <p class="subtitle">
             Joyfully invite you to celebrate the beginning of their forever, surrounded by love, blessings, and beautiful memories.
