@@ -106,6 +106,51 @@ function addHeroMouseMotion() {
 
 addHeroMouseMotion();
 
+// ---- Hero name animation ----
+// Each letter becomes its own span so it can rise and shimmer on a stagger.
+// The h1 keeps an aria-label, so screen readers still read the names normally.
+const heroNames = document.getElementById("heroNames");
+const heroCardEl = document.getElementById("heroCard");
+
+function splitNameLetters() {
+  if (!heroNames) {
+    return;
+  }
+
+  let index = 0;
+
+  heroNames.querySelectorAll(".name-word").forEach((word) => {
+    const text = word.textContent.trim();
+    word.textContent = "";
+    word.setAttribute("aria-hidden", "true");
+
+    text.split("").forEach((char) => {
+      const letter = document.createElement("span");
+      letter.className = "ltr";
+      letter.textContent = char;
+      letter.style.setProperty("--i", index);
+      word.appendChild(letter);
+      index += 1;
+    });
+  });
+
+  const amp = heroNames.querySelector(".ampersand");
+  if (amp) {
+    amp.setAttribute("aria-hidden", "true");
+  }
+}
+
+function playHeroIntro() {
+  if (heroNames) {
+    heroNames.classList.add("is-animated");
+  }
+  if (heroCardEl) {
+    heroCardEl.classList.add("is-in");
+  }
+}
+
+splitNameLetters();
+
 // ---- Background music ----
 // Browsers block audio that starts on its own, so playback is kicked off by
 // the guest's tap on the wax seal (a real user gesture) and then gently
@@ -246,6 +291,9 @@ if (envelopeIntro && openEnvelopeBtn) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
       document.body.classList.add("petals-active");
+
+      // the names now write themselves in as the page is revealed
+      playHeroIntro();
     }, 2300);
 
     // safety: guarantee the intro is fully removed from view
@@ -253,6 +301,9 @@ if (envelopeIntro && openEnvelopeBtn) {
       envelopeIntro.style.display = "none";
     }, 3200);
   }, { once: true });
+} else {
+  // no intro overlay present — animate the hero straight away
+  playHeroIntro();
 }
 
 const weddingDate = new Date("2026-08-19T09:00:00+05:30").getTime();
