@@ -1132,6 +1132,90 @@ body::before {
   transform: translateY(10px);
 }
 
+/* ---------------- MUSIC TOGGLE ---------------- */
+.music-toggle {
+  position: fixed;
+  right: clamp(14px, 3vw, 26px);
+  bottom: clamp(14px, 3vw, 26px);
+  z-index: 90;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(253, 251, 246, 0.9);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, opacity 0.5s ease;
+}
+
+.music-toggle[hidden] {
+  display: none;
+}
+
+.music-toggle:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage);
+  box-shadow: 0 18px 34px rgba(111, 124, 91, 0.2);
+}
+
+.music-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(111, 124, 91, 0.45);
+}
+
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  height: 18px;
+}
+
+.music-bars i {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--sage-deep);
+  transform-origin: 50% 100%;
+  animation: musicBar 1s ease-in-out infinite;
+}
+
+.music-bars i:nth-child(1) { animation-delay: -0.2s; }
+.music-bars i:nth-child(2) { animation-delay: -0.6s; }
+.music-bars i:nth-child(3) { animation-delay: -0.35s; }
+.music-bars i:nth-child(4) { animation-delay: -0.8s; }
+
+/* paused state: bars freeze low and a slash appears */
+.music-toggle.is-muted .music-bars i {
+  animation-play-state: paused;
+  transform: scaleY(0.3);
+  background: var(--muted);
+}
+
+.music-off-slash {
+  position: absolute;
+  width: 30px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--muted);
+  transform: rotate(-45deg) scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.3s ease;
+}
+
+.music-toggle.is-muted .music-off-slash {
+  transform: rotate(-45deg) scaleX(1);
+}
+
+@keyframes musicBar {
+  0%, 100% { transform: scaleY(0.32); }
+  50% { transform: scaleY(1); }
+}
+
 /* ---------------- PETALS ---------------- */
 .petal-layer {
   position: fixed;
@@ -1503,5 +1587,10 @@ body.petals-active .petal-layer {
   .env-letter,
   .wax-seal {
     transition-duration: 0.4s !important;
+  }
+
+  .music-bars i {
+    animation: none !important;
+    transform: scaleY(0.7);
   }
 }
